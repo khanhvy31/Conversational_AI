@@ -4,7 +4,7 @@ import openai
 
 app = Flask(__name__)
 CORS(app)
-openai.api_key = "key"  
+openai.api_key = "Key"  
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [
