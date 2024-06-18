@@ -1,3 +1,5 @@
 Flask
 openai==0.28
 Flask-Cors
+transformers
+torch
