@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, jsonify
 from transformers import AutoTokenizer, AutoModelForCausalLM
+from flask_cors import CORS
 import torch
 
 app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
+CORS(app)
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 model_name = "microsoft/DialoGPT-medium"
 
@@ -16,11 +18,12 @@ except OSError:
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    return render_template("index.html")
+# @app.route("/", methods=["GET", "POST"])
+@app.route("/")
+def home():
+    return 'Flask server is running'
 
-@app.route("/get", methods=["GET"])
+@app.route("/get")
 def chat():
     user_input = request.args.get("msg")
     new_user_input_ids = tokenizer.encode(user_input + tokenizer.eos_token, return_tensors='pt')
