@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 # app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-model_name = "microsoft/DialoGPT-medium"
+model_name = "microsoft/DialoGPT-large"
 
 try:
     model = AutoModelForCausalLM.from_pretrained(model_name)
